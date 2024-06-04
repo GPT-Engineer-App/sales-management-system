@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Box, Button, Input, Table, Tbody, Td, Th, Thead, Tr } from "@chakra-ui/react";
 
-const CustomerManagement = () => {
-  const [customers, setCustomers] = useState([]);
+const CustomerManagement = ({ customers, onAddCustomer }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [newCustomer, setNewCustomer] = useState({
     name: "",
@@ -22,7 +21,7 @@ const CustomerManagement = () => {
   };
 
   const handleAddCustomer = () => {
-    setCustomers([...customers, newCustomer]);
+    onAddCustomer(newCustomer);
     setNewCustomer({
       name: "",
       phone: "",

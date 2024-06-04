@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Container, VStack, HStack, Text, Button, IconButton, Box, Tabs, TabList, TabPanels, Tab, TabPanel, Table, Thead, Tbody, Tr, Th, Td, FormControl, FormLabel, Input, Textarea, Select } from "@chakra-ui/react";
+import CustomerManagement from "./CustomerManagement.jsx";
 import { FaUser, FaClipboardList, FaFileInvoiceDollar, FaFileContract, FaMoneyCheckAlt, FaChartLine } from "react-icons/fa";
 
 const Index = () => {
@@ -60,55 +61,6 @@ const Index = () => {
         </Tabs>
       </VStack>
     </Container>
-  );
-};
-
-const CustomerManagement = ({ customers, onAddCustomer }) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-
-  const handleSubmit = () => {
-    onAddCustomer({ name, email, phone });
-    setName("");
-    setEmail("");
-    setPhone("");
-  };
-
-  return (
-    <VStack spacing={4} align="stretch">
-      <FormControl>
-        <FormLabel>姓名</FormLabel>
-        <Input value={name} onChange={(e) => setName(e.target.value)} />
-      </FormControl>
-      <FormControl>
-        <FormLabel>邮箱</FormLabel>
-        <Input value={email} onChange={(e) => setEmail(e.target.value)} />
-      </FormControl>
-      <FormControl>
-        <FormLabel>电话</FormLabel>
-        <Input value={phone} onChange={(e) => setPhone(e.target.value)} />
-      </FormControl>
-      <Button onClick={handleSubmit}>添加客户</Button>
-      <Table variant="simple">
-        <Thead>
-          <Tr>
-            <Th>姓名</Th>
-            <Th>邮箱</Th>
-            <Th>电话</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          {customers.map((customer, index) => (
-            <Tr key={index}>
-              <Td>{customer.name}</Td>
-              <Td>{customer.email}</Td>
-              <Td>{customer.phone}</Td>
-            </Tr>
-          ))}
-        </Tbody>
-      </Table>
-    </VStack>
   );
 };
 
